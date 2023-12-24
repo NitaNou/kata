@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Kata {
 
-    /*                                  12-20-23
+    /* (1)                                 12-20-23
         A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and
         removing all non-alphanumeric characters,
         it reads the same forward and backward.
@@ -26,7 +26,7 @@ public class Kata {
         return result;
     }
 
-    /*                                  12-20-23
+    /*  (2)                                12-20-23
         Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
         A subsequence of a string is a new string that is formed from the original string by deleting some (can be none)
         of the characters without disturbing the relative positions of the remaining characters.
@@ -54,7 +54,7 @@ public class Kata {
         return result;
     }
 
-    /*                                  12-21-23
+    /*  (3)                                12-21-23
         Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
         The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
         Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
@@ -73,7 +73,7 @@ public class Kata {
         return counter;
     }
 
-    /*                                  12-23-23
+    /*  (4)                                12-23-23
         Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
         The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
         Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
@@ -84,13 +84,37 @@ public class Kata {
     public int removeDuplicates(int[] nums) {
         int counter = 0;
         for (int i = 0; i < nums.length; i++) {
-            if ( (i < nums.length-1) && (nums[i] == nums[i+1]) ) {
+            if ((i < nums.length - 1) && (nums[i] == nums[i + 1])) {
             } else {
                 nums[counter] = nums[i];
                 counter++;
             }
         }
         return counter;
+    }
+
+    /*  (5)                                12-23-23
+        Given an array nums of size n, return the majority element.
+        The majority element is the element that appears more than ⌊n / 2⌋ times.
+        You may assume that the majority element always exists in the array.
+        Input: nums = [2,2,1,1,1,2,2]
+                      [3,2,3]
+        Output: 2
+     */
+    public int majorityElement(int[] nums) {
+        int majority = 0;
+        int points = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (points == 0) {
+                majority = nums[i];
+            }
+            if (majority == nums[i]) {
+                points++;
+            } else {
+                points--;
+            }
+        }
+        return majority;
     }
 
 }
