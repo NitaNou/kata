@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Kata {
-
     /* (1)                                 12-20-23
         A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and
         removing all non-alphanumeric characters,
@@ -141,5 +140,26 @@ public class Kata {
         }
         return profit;
     }
+
+    /* (7)                                  12-24-23
+        Given a string s consisting of words and spaces, return the length of the last word in the string.
+        A word is a maximal substring consisting of non-space characters only.
+        Input: s = "Hello World"
+        Output: 5
+        Explanation: The last word is "World" with length 5.
+     */
+    public int lengthOfLastWord(String s) {
+        String trimmedWord = s.trim();
+        int length = 0;
+        for (int i = trimmedWord.length() - 1; i >= 0; i--) {
+            if (trimmedWord.charAt(i) != ' ') {
+                length++;
+            } else {
+                break;
+            }
+        }
+        return length;
+    }
+
 
 }
