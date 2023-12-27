@@ -161,5 +161,25 @@ public class Kata {
         return length;
     }
 
+    /*  (8)                                     12-26-23
+        Given two strings needle and haystack, return the index of the first occurrence of needle in haystack,
+        or -1 if needle is not part of haystack.
+        Input: haystack = "sadbutsad", needle = "sad"
+        Output: 0
+        Explanation: "sad" occurs at index 0 and 6.
+        The first occurrence is at index 0, so we return 0.
+     */
+    public int strStr(String haystack, String needle) {
+
+        int firstOccurence = haystack.contains(needle) ? haystack.indexOf(needle) : -1;
+        return firstOccurence;
+
+//        if (haystack.contains(needle)) {
+//            firstOccurence = haystack.indexOf(needle);
+//        } else {
+//            firstOccurence = -1;
+//        }
+//        return firstOccurence;
+    }
 
 }
