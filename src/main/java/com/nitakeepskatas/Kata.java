@@ -182,4 +182,24 @@ public class Kata {
 //        return firstOccurence;
     }
 
+    /*  (9)                                     12-26-23
+        Write a function to find the longest common prefix string amongst an array of strings.
+        If there is no common prefix, return an empty string "".
+        Input: strs = ["flower","flow","flight"]
+        Output: "fl"
+     */
+    public String longestCommonPrefix(String[] strs) {
+        StringBuilder result = new StringBuilder();
+        Arrays.sort(strs);
+        String firstWord = strs[0];
+        String lastWord = strs[strs.length - 1];
+        for (int i = 0; i < firstWord.length(); i++) {
+            if (firstWord.charAt(i) == lastWord.charAt(i)) {
+                result.append(firstWord.charAt(i));
+            } else {
+                break;
+            }
+        }
+        return result.toString();
+    }
 }
