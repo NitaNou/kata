@@ -2,6 +2,7 @@ package com.nitakeepskatas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Kata {
     /* (1)                                 12-20-23
@@ -232,5 +233,34 @@ public class Kata {
             }
 
         }
+    }
+
+    /*  (11)                                    01-04-24
+        Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+        Each letter in magazine can only be used once in ransomNote.
+        Example 1:
+            Input: ransomNote = "a", magazine = "b"
+            Output: false
+        Example 2:
+            Input: ransomNote = "aa", magazine = "ab"
+            Output: false
+        Example 3:
+            Input: ransomNote = "aa", magazine = "aab"
+            Output: true
+     */
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character, Integer> newMap = new HashMap<Character, Integer>();
+
+        for (int i = 0; i < magazine.length(); i++) {
+            newMap.put(magazine.charAt(i), newMap.getOrDefault(magazine.charAt(i), 0) + 1);
+        }
+
+        for (int i = 0; i < ransomNote.length(); i++) {
+            if (!newMap.containsKey(ransomNote.charAt(i)) || newMap.get(ransomNote.charAt(i)) <= 0) {
+                return false;
+            }
+            newMap.put(ransomNote.charAt(i), newMap.get(ransomNote.charAt(i))-1);
+        }
+        return true;
     }
 }
