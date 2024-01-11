@@ -1,9 +1,6 @@
 package com.nitakeepskatas;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class Kata {
     /* (1)                                 12-20-23
@@ -286,6 +283,42 @@ public class Kata {
             }
         }
         return null;
+    }
+
+    /*  (13)                                    01-11-24
+        Given two strings s and t, determine if they are isomorphic.
+        Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+        All occurrences of a character must be replaced with another character while preserving
+        the order of characters. No two characters may map to the same character, but a character may map to itself.
+        Example 1:
+            Input: s = "egg", t = "add"
+            Output: true
+        Example 2:
+            Input: s = "foo", t = "bar"
+            Output: false
+     */
+    public boolean isIsomorphic(String s, String t) {
+        Map<Character, Character> newMap = new HashMap<>();
+        if (s.length() != t.length()) {
+            return false;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            Character letterInSString = s.charAt(i);
+            Character letterInTString = t.charAt(i);
+            if (!newMap.containsKey(letterInSString)) {
+                if (!newMap.containsValue(letterInTString)) {
+                    newMap.put(letterInSString, letterInTString);
+                } else {
+                    return false;
+                }
+            } else {
+                Character duplicateSString = newMap.get(letterInSString);
+                if (duplicateSString != letterInTString) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
