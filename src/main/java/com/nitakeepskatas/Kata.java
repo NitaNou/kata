@@ -321,4 +321,31 @@ public class Kata {
         return true;
     }
 
+    /*  (14)                                    01-11-24
+        Given an integer x, return true if x is a palindrome, and false otherwise.
+        Example 1:
+            Input: x = 121
+            Output: true
+            Explanation: 121 reads as 121 from left to right and from right to left.
+        Example 2:
+            Input: x = -121
+            Output: false
+            Explanation: From left to right, it reads -121. From right to left, it becomes 121-.
+            Therefore, it is not a palindrome.
+        Example 3:
+            Input: x = 10
+            Output: false
+            Explanation: Reads 01 from right to left.
+            Therefore, it is not a palindrome.
+     */
+    public boolean isPalindrome(int x) {
+        int reversed = 0; // 5, 54, 545
+        int tempX = x; //ex. 545, 54, 5, 0
+        while (tempX > 0) {
+            int remainder = tempX % 10; //5, 4, 5
+            reversed = reversed * 10 + remainder; // 5, 54, 545
+            tempX = tempX / 10; // 54, 5, 0
+        }
+        return reversed == x;
+    }
 }
