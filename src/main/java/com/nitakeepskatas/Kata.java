@@ -348,4 +348,62 @@ public class Kata {
         }
         return reversed == x;
     }
+
+    /*  (15)                                    01-16-24
+        Task:
+        The code in your editor does the following:
+        1. Reads an integer from stdin and saves it to a variable, n, denoting some number of integers.
+        2. Reads n integers corresponding to a[0], a[1]...a[n-1] from stdin and saves each integer a[i] to a variable, val.
+        3. Attempts to print each element of an array of integers named a.
+        Write the following code in the unlocked portion of your editor:
+        1. Create an array, a, capable of holding n integers.
+        2. Modify the code in the loop so that it saves each sequential value to its corresponding location in the array.
+           For example, the first value must be stored in a[0], the second value must be stored in a[1], and so on.
+     */
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = scan.nextInt();
+        }
+        scan.close();
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
+    /*  (16)                                    01-16-24
+        Java has 8 primitive data types; char, boolean, byte, short, int, long, float, and double.
+        For this exercise, we'll work with the primitives used to hold integer values (byte, short, int, and long):
+        A byte is an 8-bit signed integer.
+        A short is a 16-bit signed integer.
+        An int is a 32-bit signed integer.
+        A long is a 64-bit signed integer.
+        Given an input integer, you must determine which primitive data types are capable of properly storing that input.
+     */
+    public static void main2(String[] argh) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for (int i = 0; i < t; i++) {
+            try {
+                long x = sc.nextLong();
+                System.out.println(x + " can be fitted in:");
+                if (x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE) {
+                    System.out.println("* byte");
+                }
+                if (x >= Short.MIN_VALUE && x <= Short.MAX_VALUE) {
+                    System.out.println("* short");
+                }
+                if (x >= Integer.MIN_VALUE && x <= Integer.MAX_VALUE) {
+                    System.out.println("* int");
+                }
+                System.out.println("* long");
+            } catch (Exception e) {
+                System.out.println(sc.next() + " can't be fitted anywhere.");
+            }
+
+        }
+    }
+
 }
