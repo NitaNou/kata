@@ -4,7 +4,10 @@ public class Main {
     public static void main(String[] args) {
         Kata kata = new Kata();
 
-        int length = kata.lengthOfLastWord("Hello World");
-        System.out.println(length);
+        int romanTest = kata.romanToInt("MCMXCIV");
+
+        System.out.println(romanTest);
+
+
     }
 }

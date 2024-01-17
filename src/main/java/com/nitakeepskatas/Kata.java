@@ -360,7 +360,7 @@ public class Kata {
         2. Modify the code in the loop so that it saves each sequential value to its corresponding location in the array.
            For example, the first value must be stored in a[0], the second value must be stored in a[1], and so on.
      */
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
         int[] a = new int[n];
@@ -402,8 +402,69 @@ public class Kata {
             } catch (Exception e) {
                 System.out.println(sc.next() + " can't be fitted anywhere.");
             }
-
         }
     }
+
+    /*  (17)                                    01-17-24
+        Given a roman numeral, convert it to an integer.
+        Example 1:
+            Input: s = "III"
+            Output: 3
+            Explanation: III = 3.
+        Example 2:
+            Input: s = "LVIII"
+            Output: 58
+            Explanation: L = 50, V= 5, III = 3.
+        Example 3:
+            Input: s = "MCMXCIV"
+            Output: 1994
+            Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+     */
+    public int romanConversion(char letter) {
+        int result = 0;
+        switch (letter) {
+            case 'I' :
+                result = 1;
+                break;
+            case 'V' :
+                result = 5;
+                break;
+            case 'X' :
+                result = 10;
+                break;
+            case 'L' :
+                result = 50;
+                break;
+            case 'C' :
+                result = 100;
+                break;
+            case 'D' :
+                result = 500;
+                break;
+            case 'M' :
+                result = 1000;
+                break;
+        }
+        return result;
+    }
+    public int romanToInt(String s) {
+        int currentCharValue = romanConversion(s.charAt(0));
+        int sum = 0;
+        for (int i = 1; i < s.length(); i++) {
+            int nextCharValue = romanConversion(s.charAt(i));
+            if (currentCharValue < nextCharValue) {
+                sum -= currentCharValue;
+            } else {
+                sum += currentCharValue;
+            }
+            currentCharValue = nextCharValue;
+        }
+        sum += currentCharValue;
+        return sum;
+    }
+
+
+
+
 
 }
