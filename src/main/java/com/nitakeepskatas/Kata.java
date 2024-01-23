@@ -532,4 +532,37 @@ public class Kata {
         return false;
     }
 
+    /*  (20)                                    01-22-24
+        Given a pattern and a string s, find if s follows the same pattern.
+        Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+        Example 1:
+            Input: pattern = "abba", s = "dog cat cat dog"
+            Output: true
+        Example 2:
+            Input: pattern = "abba", s = "dog cat cat fish"
+            Output: false
+        Example 3:
+            Input: pattern = "aaaa", s = "dog cat cat dog"
+            Output: false
+      */
+    public boolean wordPattern(String pattern, String s) {
+        String[] stringArray = s.split(" ");
+        if (pattern.length() != stringArray.length) {
+            return false;
+        }
+        Map<Character, String> hashMap = new HashMap<>();
+        for (int i = 0; i < pattern.length(); i++) {
+            char letter = pattern.charAt(i);
+            if (hashMap.containsKey(letter)) {
+                if (!hashMap.get(letter).equals(stringArray[i])) {
+                    return false;
+                }
+            }
+            else if (hashMap.containsValue(stringArray[i])) {
+                return false;
+            }
+            hashMap.put(letter, stringArray[i]);
+        }
+        return true;
+    }
 }
