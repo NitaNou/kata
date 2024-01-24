@@ -557,8 +557,7 @@ public class Kata {
                 if (!hashMap.get(letter).equals(stringArray[i])) {
                     return false;
                 }
-            }
-            else if (hashMap.containsValue(stringArray[i])) {
+            } else if (hashMap.containsValue(stringArray[i])) {
                 return false;
             }
             hashMap.put(letter, stringArray[i]);
@@ -583,10 +582,10 @@ public class Kata {
         }
         int[] countOfLetters = new int[26];
         for (int i = 0; i < s.length(); i++) {
-            countOfLetters[s.charAt(i)-'a']++;
+            countOfLetters[s.charAt(i) - 'a']++;
         }
         for (int i = 0; i < t.length(); i++) {
-            countOfLetters[t.charAt(i)-'a']--;
+            countOfLetters[t.charAt(i) - 'a']--;
         }
         for (int countOfLetter : countOfLetters) {
             if (countOfLetter != 0) {
@@ -595,4 +594,31 @@ public class Kata {
         }
         return true;
     }
+
+    /*  (22)                                    01-23-24
+        Given an array of integers, find and print its number of negative subarrays on a new line.
+     */
+    public static void main3(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] array = new int[n];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = scanner.nextInt();
+        }
+        scanner.close();
+        int countOfNegativeSubArrays = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i; j < array.length; j++) {
+                int sumOfSubArray = 0;
+                for (int k = i; k <= j; k++) {
+                    sumOfSubArray += array[k];
+                }
+                if (sumOfSubArray < 0) {
+                    countOfNegativeSubArrays++;
+                }
+            }
+        }
+        System.out.println(countOfNegativeSubArrays);
+    }
+
 }
