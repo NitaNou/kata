@@ -621,4 +621,36 @@ public class Kata {
         System.out.println(countOfNegativeSubArrays);
     }
 
+    /*  (23)                                    01-29-24
+        In each line, output the number located in yth position of xth line. If there is no such position, just print "ERROR!"
+    */
+    public static void main4(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int firstNumIteration = scanner.nextInt();
+        ArrayList<ArrayList<Integer>> verticalList = new ArrayList<>();
+        for (int i = 0; i < firstNumIteration; i++) {
+            int nextIteration = scanner.nextInt();
+            ArrayList<Integer> horizontalList = new ArrayList<>();
+            for (int j = 0; j < nextIteration; j++) {
+                int numInIteration = scanner.nextInt();
+                horizontalList.add(numInIteration);
+            }
+            verticalList.add(horizontalList);
+        }
+        int numOfQuery = scanner.nextInt();
+        for (int i = 0; i < numOfQuery; i++) {
+            int xLine = scanner.nextInt(); //3
+            int yPosition = scanner.nextInt(); //4
+            if (xLine > verticalList.size() || yPosition > verticalList.get(xLine - 1).size()) {
+                System.out.println("ERROR!");
+            } else {
+                System.out.println(verticalList.get(xLine - 1).get(yPosition - 1));
+            }
+        }
+
+    }
+
+
 }
+
+
