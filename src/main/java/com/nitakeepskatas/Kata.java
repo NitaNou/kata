@@ -639,18 +639,42 @@ public class Kata {
         }
         int numOfQuery = scanner.nextInt();
         for (int i = 0; i < numOfQuery; i++) {
-            int xLine = scanner.nextInt(); //3
-            int yPosition = scanner.nextInt(); //4
+            int xLine = scanner.nextInt();
+            int yPosition = scanner.nextInt();
             if (xLine > verticalList.size() || yPosition > verticalList.get(xLine - 1).size()) {
                 System.out.println("ERROR!");
             } else {
                 System.out.println(verticalList.get(xLine - 1).get(yPosition - 1));
             }
         }
+    }
 
+    /*  (24)                                    02-02-24
+        Print the updated list L as a single line of space-separated integers.
+    */
+    public static void main5(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numElements = scanner.nextInt();
+        List<Integer> listOfInts = new ArrayList<>();
+        for (int i = 0; i < numElements; i++) {
+            listOfInts.add(scanner.nextInt());
+        }
+        int numQueries = scanner.nextInt();
+        for (int i = 0; i < numQueries; i++) {
+            String method = scanner.next();
+            if (method.equals("Insert")) {
+                listOfInts.add(scanner.nextInt(), scanner.nextInt());
+            } else {
+                listOfInts.remove(scanner.nextInt());
+            }
+        }
+        for (int num : listOfInts) {
+            System.out.print(num + " ");
+        }
     }
 
 
 }
+
 
 
